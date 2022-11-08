@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com" th:replace="norm/base::Layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>SmartContactManager - About</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="card">
+				<div class="card-body">
+					<div class="container text-center">
+					<img style="height: 400px;width: 400px"
+					th:src="@{'/img/dashboard.png'}" alt="profile pic" 
+					class="my_profile_pic" />
+					</div>
+					<h1 class="text-center">
+						Access your contacts from anywhere
+					</h1>
+				</div>
+			</div>
+		
+		</div>
+	</section>
+</body>
+</html>

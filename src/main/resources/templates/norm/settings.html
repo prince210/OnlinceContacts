@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com"
+	th:replace="norm/base::Layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>SmartContactManager - Profile</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+
+			<div class="card">
+				<div class="card-body">
+					<h1 class="text-center" th:text="${user.name}"></h1>
+					<form th:object="${user}" enctype="multipart/form-data"
+						action="#" method="POST" th:action="@{/user/process-setting}"
+						class="mt-2">
+						<div class="container text-center">
+							<img style="height: 200px; width: 200px"
+								th:src="@{'/img/'+${user.imageUrl}}" alt="profile pic"
+								class="my_profile_pic" />
+							<div class="custom-file" style="margin-bottom: 10px">
+								<p class="text-center">choose new image</p>
+								<input type="file" name="profileImage">
+							</div>
+						</div>
+
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+							</div>
+
+							<label for="newPassword" style="margin-left: 8px;margin-right:20px">Enter New Password</label>
+							<input type="password" id="newPassword" name="password"
+								placeholder="Enter new password" style="width: 60%" required />
+						</div>
+
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+							</div>
+							<label for="confirmPassword" style="margin-left: 5px;margin-right:5px">Confirm New Password</label>
+							<input type="password" id="confirmPassword" name="confirmPassword"
+								placeholder="Confirm Password" style="width: 60%" required />
+						</div>
+						
+						
+						
+						<div class="form-floating justify-content-center">
+								<textarea name="about" class="form-control"
+									style="height: 150px;width:600px" placeholder="Let us know you"
+									id="floatingTextarea" th:text="${user.about}"></textarea>
+								<label for="floatingTextarea">About</label>
+						</div>
+						
+						<div class="container text-center">
+							<button class="btn btn-outline-success">Save changes</button>
+						</div>
+					</form>
+				</div>
+				
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>

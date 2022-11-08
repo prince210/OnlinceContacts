@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com"
+	th:replace="norm/base::Layout(~{::section})">
+	
+<head>
+<meta charset="ISO-8859-1">
+<title>SmartContactManager - show contacts</title>
+</head>
+<body>
+	<section>
+		<div class="card ">
+			<div class="card-body">
+				<h1 class="text-center">Your contacts</h1>
+				
+				<table class="table">
+				  <thead>
+				    <tr>
+				      <th scope="col">#ID</th>
+				      <th scope="col">Name</th>
+				      <th scope="col">Email</th>
+				      <th scope="col">Phone</th>
+				      <th scope="col">Action</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr th:each="c : ${contacts}">
+				      <th scope="row" th:text="${c.cId}"></th>
+				      <td>
+				      	<img class="my_profile_picture"
+				      	 th:src="@{'/img/'+${c.image}}" 
+				      	 alt="profile photo" />
+				      	 <span th:text="${c.name}"></span>
+				      </td>
+				      <td >
+				      	<a th:href="@{'/user/'+${c.cId}+'/contact'}">
+				      		<span th:text="${c.email}"></span>
+				      	</a>
+				      </td>
+				      <td th:text="${c.phone}"></td>
+				      <td>
+				      	<a th:onclick="|deleteContact(${c.cId})|" class="btn btn-danger me-2">Delete</a>
+				      	<form th:action="@{'/user/update-contact/'+${c.cId}}" method="POST" class="d-inline-flex">
+				      		<button class="btn btn-primary">Update</button>
+				      	</form>
+				      </td>
+				    </tr>
+				  </tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
